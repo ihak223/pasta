@@ -1,22 +1,31 @@
 package com.pasta.interpreter.parsing.tokens;
 
+import com.pasta.util.Hex;
+
 public class Variable {
+    Hex hexData;
     String type;
-    String pointer;
+    String varName;
     Boolean global = false;
-    String data;
 
-    public Variable(String type, String name) {
-        this.type = type;
-        this.pointer = name;
+    public Variable(String data, String name) { // String constructor
+        type = "str";
+        varName = name;
+        hexData = new Hex(data);
     }
-
-    public Variable(String type, String name, Boolean global) {
-        this.type = type;
-        this.pointer = name;
-        this.global = global;
+    public Variable(char data, String name) { // Character constructor
+        type = "char";
+        varName = name;
+        hexData = new Hex(data);
     }
-    public void setData(String data) {
-        this.data = data;
+    public Variable(int data, String name) { // Integer constructor
+        type = "str";
+        varName = name;
+        hexData = new Hex(data);
+    }
+    public Variable(Boolean data, String name) { // Boolean constructor
+        type = "str";
+        varName = name;
+        hexData = new Hex(data);
     }
 }
