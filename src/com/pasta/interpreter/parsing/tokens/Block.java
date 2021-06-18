@@ -3,7 +3,7 @@ package com.pasta.interpreter.parsing.tokens;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Block implements Token {
+public class Block {
     public String name;
     public String type;
     public Variable[] args;

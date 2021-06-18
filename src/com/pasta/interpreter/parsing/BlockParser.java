@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BlockParser {
     public void parse() {
-        String[] lines = {"$class Main:", "\t$const main()", "\t\tprint(\"Hello, World\")"};
+        String[] lines = {"$class Main:", "\t$const main()", "  \tprint(\"Hello, World\")"};
         List<Block> blocks = new ArrayList<Block>();
 
         Block currentBlock = new Block();
@@ -36,7 +36,7 @@ public class BlockParser {
                     System.out.println("header");
                     System.out.println(inBlock);
 
-                } else if (inBlock && (line.charAt(0) != '\t' && line.substring(0, 2) != "   ")) {
+                } else if (inBlock && (line.charAt(0) != '\t' && line.substring(0, 2) != "  ")) {
 
                     currentBlock.code.add(line);
                     blocks.add(currentBlock);
@@ -45,19 +45,9 @@ public class BlockParser {
                     System.out.println("no tab");
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.err.println("Error:"+e);
+                System.out.println("[Error]");
             }
             index++;
         }
-
-        List<String> someCode = (blocks.get(0).code);
-
-        String lineCode[] = new String[someCode.size()];
-        lineCode = someCode.toArray(lineCode);
-        System.out.println(Arrays.toString(lineCode));
-        for (String code : lineCode) {
-            System.out.println(code);
-        }
-        System.out.println((lines[1].charAt(0) == '\t'));
     }
 }
