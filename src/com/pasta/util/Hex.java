@@ -1,7 +1,7 @@
 package com.pasta.util;
 
 public class Hex {
-    String hexString;
+    public String hexString;
     String type;
     public Hex(int decimal) { // Integer Constructor
         type = "int";
@@ -19,10 +19,21 @@ public class Hex {
         type = "bool";
         int boolInt = bool? 1 : 0;
 
-        hexString = Integer.toHexString(Integer.parseInt(Integer.toString(boolInt), 2));
+        hexString = Integer.toHexString(boolInt);
     }
-    public int get() {
-
+    public int getInt() {
+        return Integer.parseInt(hexString, 16);
     }
-
+    public char getChar() {
+        return (char) Integer.parseInt(hexString, 16);
+    }
+    /*
+    public float getFloat() {
+        long i = Long.parseLong(hexString, 16);
+        return Float.intBitsToFloat((int) i);
+    }
+    */
+    public boolean getBoolean() {
+        return (Integer.parseInt(hexString, 16) == 1);
+    }
 }
