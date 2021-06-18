@@ -24,7 +24,7 @@ public class Lexer {
             String[] splitLine = line.split(" ");
             switch (splitLine[0]) {
                 case "Int":
-
+                    tokens.add(new Token());
 
                 default:
                     System.err.println("[Error] Error While Lexering.\nUnrecognized Token");

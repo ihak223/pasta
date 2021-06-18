@@ -15,9 +15,17 @@ public class Token {
     }
 
     public String name;
-    public Boolean reference;
+    public Boolean isReference;
+    public Variable reference;
 
     public Token() {
+
+    }
+    public Token(String nameStr) {
+
+    }
+    public Token(String nameStr, Variable reference) {
+        isReference = true;
 
     }
 
