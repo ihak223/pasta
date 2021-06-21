@@ -22,9 +22,11 @@ public class Lexer {
             List<Token> tokens = new ArrayList<Token>();
 
             String[] splitLine = line.split(" ");
+            Token currentToken = new Token();
             switch (splitLine[0]) {
                 case "Int":
-                    tokens.add(new Token());
+                    currentToken.name = "INT";
+                    tokens.add(currentToken);
 
                 default:
                     System.err.println("[Error] Error While Lexering.\nUnrecognized Token");

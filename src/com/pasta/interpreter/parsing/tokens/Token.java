@@ -29,6 +29,7 @@ public class Token {
         isReference = true;
         reference = referenceVar;
         referencePath = reference.path;
+        name = nameStr;
 
     }
 
