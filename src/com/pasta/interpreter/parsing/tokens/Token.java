@@ -17,6 +17,7 @@ public class Token {
     public String name;
     public Boolean isReference;
     public Variable reference;
+    public String referencePath;
 
     public Token() {
 
@@ -24,8 +25,10 @@ public class Token {
     public Token(String nameStr) {
 
     }
-    public Token(String nameStr, Variable reference) {
+    public Token(String nameStr, Variable referenceVar) {
         isReference = true;
+        reference = referenceVar;
+        referencePath = reference.path;
 
     }
 
