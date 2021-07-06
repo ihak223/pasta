@@ -1,0 +1,5 @@
+$func void print(str msg)
+    call:sys.out(msg)
+
+$run int main()
+    call:print("Hello World")

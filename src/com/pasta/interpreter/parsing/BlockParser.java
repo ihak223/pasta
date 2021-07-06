@@ -1,11 +1,8 @@
 package com.pasta.interpreter.parsing;
 
-import com.pasta.interpreter.parsing.tokens.Block;
-import com.pasta.interpreter.parsing.tokens.Variable;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import com.pasta.interpreter.parsing.tokens.Block;
 
 public class BlockParser {
     public void parse() {
