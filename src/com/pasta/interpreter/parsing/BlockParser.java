@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BlockParser {
     public void parse() {
-        String[] lines = {"$class Main:", "\t$const main()", "  \tprint(\"Hello, World\")"};
+        String[] lines = {"$class Main:", "\t$const main()", "  \tprint(\"Hello, World\")", "$test", "\ttest", "  ", "  "};
         List<Block> blocks = new ArrayList<Block>();
 
         Block currentBlock = new Block();
@@ -17,8 +17,9 @@ public class BlockParser {
         boolean inBlock = false;
 
         int index = 0;
+        System.out.printf("[PASTA : Block Parser] Running File, Lines : %S\n", (lines.length));
         for (String line : lines) {
-            System.out.println(line);
+            System.out.printf("\n[PASTA : Block Parser] Line : %S, Index : "+index+"\n", line);
             try {
                 if (inBlock && lines[index+1].charAt(0) == '$') {
 
@@ -26,15 +27,12 @@ public class BlockParser {
                     blocks.add(currentBlock);
                     currentBlock.reset();
                     inBlock = false;
-                    System.out.println("end header");
+                    System.out.println("[PASTA : Block Parser] Closing Header ... ");
 
                 } else if (!inBlock && line.charAt(0) == '$') {
 
-                    String header = line.substring(1);
-                    System.out.println(header);
                     inBlock = true;
-                    System.out.println("header");
-                    System.out.println(inBlock);
+                    System.out.println("[PASTA : Block Parser] Found Header : '"+line+"'");
 
                 } else if (inBlock && (line.charAt(0) != '\t' && line.substring(0, 2) != "  ")) {
 
@@ -42,10 +40,15 @@ public class BlockParser {
                     blocks.add(currentBlock);
                     currentBlock.reset();
                     inBlock = false;
-                    System.out.println("no tab");
+                    System.out.println("[PASTA : Block Parser] Closing Header ... ");
+
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("[Error]");
+                if (index == lines.length || index == lines.length-1) {
+                    System.out.println("[PASTA : Block Parser] End Of File ... ");
+                } else {
+                    System.out.println("[PASTA : Block Parser : Error] Something went wrong ... ");
+                }
             }
             index++;
         }
